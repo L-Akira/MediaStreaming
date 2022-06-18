@@ -6,7 +6,7 @@ class VideoController {
   public async getVideo(req: Request, res: Response) {
     const { range } = req.headers;
     if (!range) {
-      res.status(400).send('Required Range Header');
+      return res.status(400).json('Required Range Header');
     }
     const {
       start,
@@ -23,11 +23,15 @@ class VideoController {
       'Content-Type': 'video/mp4',
     });
 
-    pipeline(
+    return pipeline(
       videoStreamChunk,
       res,
       (err) => {
-        if (err) { console.error('Pipeline failed.', err); } else { console.log('Pipeline succeeded.'); }
+        if (err) {
+          console.error('Pipeline failed.', err);
+        } else {
+          console.log('Pipeline succeeded.');
+        }
       },
     );
   }
