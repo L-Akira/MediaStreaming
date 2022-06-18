@@ -6,7 +6,7 @@ class VideoController {
   public async getVideo(req: Request, res: Response) {
     const { range } = req.headers;
     if (!range) {
-      return res.status(400).json('Required Range Header');
+      return res.status(400).json({ message: 'Required Range Header' });
     }
     const {
       start,
@@ -29,8 +29,6 @@ class VideoController {
       (err) => {
         if (err) {
           console.error('Pipeline failed.', err);
-        } else {
-          console.log('Pipeline succeeded.');
         }
       },
     );
