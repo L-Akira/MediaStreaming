@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { pipeline } from 'stream';
-import videoService from '../../services/VideoService';
+import videoService from '../../services/videoService';
 
 class VideoController {
   public async getVideo(req: Request, res: Response) {
