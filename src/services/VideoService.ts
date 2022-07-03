@@ -9,7 +9,7 @@ class VideoService {
 
     const end = this.getRangeEnd(
       start,
-      +process.env.CHUNK_SIZE_MB,
+      process.env.CHUNK_SIZE_MB,
       videoSize,
     );
 
